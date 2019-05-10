@@ -32,4 +32,4 @@ A base theme is created from the [Timber Starter Theme](https://github.com/timbe
 [timber documentation](https://www.upstatement.com/timber/) for more information.
 
 ## License
-This project is licensed under the MIT License - see the LICENSE.md file for details
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/jesseday/base-wp/blob/master/LICENSE) file for details
