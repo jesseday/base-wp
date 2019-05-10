@@ -6,10 +6,12 @@ cd ./$1/www
 
 # Download wp core
 /usr/local/bin/wp core download
-wget https://raw.githubusercontent.com/jesseday/base-wp/master/.htaccess
+wget https://raw.githubusercontent.com/jesseday/base-wp/master/sample.htaccess
+mv sample.htaccess .htaccess
 
 # Setup git
-wget https://raw.githubusercontent.com/jesseday/base-wp/master/.gitignore
+wget https://raw.githubusercontent.com/jesseday/base-wp/master/sample.gitignore
+mv sample.gitignore .gitignore
 git init
 git add -A .
 git commit -m "Initial site setup"
