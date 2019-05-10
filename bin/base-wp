@@ -14,6 +14,23 @@ git init
 git add -A .
 git commit -m "Initial site setup"
 
+echo -n "Would you like to setup a database? [y/n]: "
+read database
+
+if [[ $database == 'y' ]]; then
+	echo -n "What is the database name?"
+	read dbname
+	echo -n "What is the database user name?"
+	read dbuser
+
+	mysql -u $dbuser -e "CREATE DATABASE IF NOT EXISTS $dbname"
+	wp config create --dbname=$dbname --dbuser=$dbuser
+else
+	echo 'Exiting.  Your setup is incomplete.'
+	exit
+fi
+
+
 # Add Base Plugins
 wp plugin install classic-editor disable-embeds disable-emojis \
 editor-menu-and-widget-access ga-google-analytics tiny-compress-images wp-mail-smtp wp-sweep \
