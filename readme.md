@@ -30,3 +30,6 @@ The following are installed by default.  Those that are marked are also activate
 ## Theme
 A base theme is created from the [Timber Starter Theme](https://github.com/timber/starter-theme).  Please see the
 [timber documentation](https://www.upstatement.com/timber/) for more information.
+
+## License
+This project is licensed under the MIT License - see the LICENSE.md file for details
