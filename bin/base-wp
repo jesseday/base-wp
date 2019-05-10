@@ -20,21 +20,41 @@ echo -n "Would you like to setup a database? [y/n]: "
 read database
 
 if [[ $database == 'y' ]]; then
-	echo -n "What is the database name?"
+	echo -n "What is the database name? "
 	read dbname
-	echo -n "What is the database user name?"
+	echo -n "What is the database user name? "
 	read dbuser
 
 	mysql -u $dbuser -e "CREATE DATABASE IF NOT EXISTS $dbname"
-	wp config create --dbname=$dbname --dbuser=$dbuser
+	wp config create --dbname="$dbname" --dbuser="$dbuser"
 else
 	echo 'Exiting.  Your setup is incomplete.'
 	exit
 fi
 
+echo -n "Would you like to install wordpress? [y/n]: "
+read doinstall
+
+if [[ $doinstall == 'y' ]]; then
+	echo -n "What is the url of your local wordpress install? ";
+	read siteurl
+	echo -n "What is the title of your new site? "
+	read sitetitle
+	echo -n "What is the name of your admin user? "
+	read siteadmin
+	echo -n "What is the email address of your admin user? "
+	read adminemail
+
+	wp core install --url="$siteurl" --title="$sitetitle" --admin_user="$siteadmin" --admin_email="$adminemail"
+else
+	echo "Exiting before installing wordpress.  Your setup is incomplete."
+	exit
+fi
 
 # Add Base Plugins
 wp plugin install classic-editor disable-embeds disable-emojis \
 editor-menu-and-widget-access ga-google-analytics tiny-compress-images wp-mail-smtp wp-sweep \
 redirection wordpress-seo debug-bar timber-library
 
+git add -A .
+git commit -m "Adding default plugins"
