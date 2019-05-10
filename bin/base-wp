@@ -56,5 +56,29 @@ wp plugin install classic-editor disable-embeds disable-emojis \
 editor-menu-and-widget-access ga-google-analytics tiny-compress-images wp-mail-smtp wp-sweep \
 redirection wordpress-seo debug-bar timber-library
 
+wp plugin activate disable-emojis disable-embeds wp-sweep wordpress-seo timber-library
+
 git add -A .
 git commit -m "Adding default plugins"
+
+# Add timber starter theme
+cd wp-content/themes/
+wget -O timber-starter-theme.zip https://github.com/timber/starter-theme/archive/master.zip
+unzip timber-starter-theme.zip
+rm timber-starter-theme.zip
+
+echo -n "Would you like to rename the starter theme? [y/n] "
+read renametheme
+if [[ $renametheme == 'y' ]]; then
+	echo -n "What would you like to name the theme (no spaces or special characters.  Separate words with hyphens. Ex: my-new-client-theme): "
+	read themename
+	mv starter-theme-master $themename
+else
+	themename="starter-theme-master"
+fi
+
+git add -A .
+git commit -m "Add $themename, created from timber starter theme."
+
+wp theme enable $themename
+cd ../../
