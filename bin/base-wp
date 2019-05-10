@@ -6,5 +6,16 @@ cd ./$1/www
 
 # Download wp core
 /usr/local/bin/wp core download
+wget https://raw.githubusercontent.com/jesseday/base-wp/master/.htaccess
 
 # Setup git
+wget https://raw.githubusercontent.com/jesseday/base-wp/master/.gitignore
+git init
+git add -A .
+git commit -m "Initial site setup"
+
+# Add Base Plugins
+wp plugin install classic-editor disable-embeds disable-emojis \
+editor-menu-and-widget-access ga-google-analytics tiny-compress-images wp-mail-smtp wp-sweep \
+redirection wordpress-seo debug-bar timber-library
+
