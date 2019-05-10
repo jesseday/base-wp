@@ -56,7 +56,7 @@ wp plugin install classic-editor disable-embeds disable-emojis \
 editor-menu-and-widget-access ga-google-analytics tiny-compress-images wp-mail-smtp wp-sweep \
 redirection wordpress-seo debug-bar timber-library
 
-wp plugin activate disable-emojis disable-embeds wp-sweep wordpress-seo timber-library
+wp plugin activate disable-emojis disable-embeds editor-menu-and-widget-access wp-sweep wordpress-seo timber-library
 
 git add -A .
 git commit -m "Adding default plugins"
