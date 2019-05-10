@@ -1,4 +1,4 @@
-# Base Wordpress Installation
+# Base Wordpress Installer
 
 ## Description
 
